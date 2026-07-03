@@ -1,0 +1,28 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        
+        perms = [[]]
+
+        for num in nums:
+            new_perms = []
+            for p in perms:
+                for i in range(len(p)+1):
+                    p_copy = p.copy()
+                    p_copy.insert(i, num)
+                    new_perms.append(p_copy)
+            perms = new_perms
+        
+        return perms
+
+# 
+# 
+# [1  2  3]
+#  ^
+# slice = [0:currIndex]+[currIndex+1:n]
+#
+# for i in range(len(slice))
+#   set.add([0:i]+[num]+[i:n])
+#
+# return set
+# 
+# 
